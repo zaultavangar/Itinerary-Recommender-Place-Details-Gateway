@@ -3,6 +3,7 @@ package com.zaultavangar.ItineraryRecommender;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.URI;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -15,9 +16,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Service
 public class GeocodeService {
 
+  @Value("${mapbox.token}")
+  private String token;
+
   public Object findLocations(String location){
     String apiUrl = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + location + ".json";
-    String token = "pk.eyJ1IjoiemF1bHRhdmFuZ2FyIiwiYSI6ImNsc253ZzdxcjA5MDYyam1ybmxzdjk3cjgifQ.qDVG76QOoc0xvTob1GtPXg";
     URI uri = UriComponentsBuilder.fromHttpUrl(apiUrl)
         .queryParam("access_token", token)
         .build()

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = {"http://localhost:1050", "https://browndash.com"})
 public class ItineraryRecommenderController {
-  public NerService nerService;
+//  public NerService nerService;
   public GeocodeService geocodeService;
 
   public FlightsService flightsService;
@@ -22,37 +22,37 @@ public class ItineraryRecommenderController {
 
 
   public ItineraryRecommenderController(
-      NerService nerService,
+//      NerService nerService,
       GeocodeService geocodeService,
       FlightsService flightsService,
       PointsOfInterestService pointsOfInterestService){
-    this.nerService = nerService;
+//    this.nerService = nerService;
     this.geocodeService = geocodeService;
     this.flightsService = flightsService;
     this.pointsOfInterestService = pointsOfInterestService;
   }
 
-  @GetMapping("/identifyLocations")
-  public Object identifyLocations(@RequestParam String input){
-
-    return nerService.getNERLocations(input);
-  }
+//  @GetMapping("/identifyLocations")
+//  public Object identifyLocations(@RequestParam String input){
+//
+//    return nerService.getNERLocations(input);
+//  }
 
   @GetMapping("/geocodeLocation")
   public Object geocodeLocation(@RequestParam String input){
     return geocodeService.findLocations(input);
   }
 
-  @GetMapping("/nearestAirports")
-  public Object nearestAirports(@RequestParam String lat, @RequestParam String lng){
-    try {
-      return flightsService.getNearestAirports(
-          Double.parseDouble(lat),
-          Double.parseDouble(lng));
-    } catch (Exception err) {
-      return Map.of("error: ", err);
-    }
-  }
+//  @GetMapping("/nearestAirports")
+//  public Object nearestAirports(@RequestParam String lat, @RequestParam String lng){
+//    try {
+//      return flightsService.getNearestAirports(
+//          Double.parseDouble(lat),
+//          Double.parseDouble(lng));
+//    } catch (Exception err) {
+//      return Map.of("error: ", err);
+//    }
+//  }
 
   @GetMapping("/placeDetails")
   public Object getPlaceDetailsByLngLat(

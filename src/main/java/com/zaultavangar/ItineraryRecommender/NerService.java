@@ -3,6 +3,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.URI;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -13,9 +14,11 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class NerService {
+    @Value("${huggingFace.token}")
+    private String token;
+
     public List<String> getNERLocations(String input){
       String apiUrl = "https://api-inference.huggingface.co/models/dslim/bert-base-NER";
-      String token = "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";
       String payload = "{\"inputs\":\"" + input + "\"}";
 
       HttpHeaders headers = new HttpHeaders();

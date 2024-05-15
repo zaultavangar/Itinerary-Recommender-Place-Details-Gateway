@@ -1,2 +1,4 @@
 server:
     port: 8080
+mapbox.token: pk.eyJ1IjoiemF1bHRhdmFuZ2FyIiwiYSI6ImNsc253ZzdxcjA5MDYyam1ybmxzdjk3cjgifQ.qDVG76QOoc0xvTob1GtPXg;
+huggingFace.token: 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
